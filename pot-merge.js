@@ -72,7 +72,7 @@ Block.prototype.hash = function() {
     // In case of a plural block, `this.msgid` will contain both msgid and
     // msgid_plural. Extract only msgid, since it's the unique identifier.
     var msgid = this.msgid.length > 0 ? buildMsgid(this.msgid) : [];
-    
+
     var strToHash = msgid + this.msgctx;
 
     var hash = 0, i, chr, len;
@@ -107,6 +107,8 @@ Block.prototype.hash = function() {
          duplicate.merge(block);
      else {
         try {
+            let msgidValue = block["msgid"][0].split(" ")[1]
+            block['msgstr'] = [new String('msgstr ' + msgidValue)]
             this.blocks.push(block);
         } catch (e) {
             console.log(e);
@@ -117,7 +119,7 @@ Block.prototype.hash = function() {
 SetOfBlocks.prototype.getDuplicate = function(hash) {
     for (var i = 0; i<this.blocks.length;i++)
         if (this.blocks[i].hash() === hash)
-            return this.blocks[i];      
+            return this.blocks[i];
 
         return;
     }
