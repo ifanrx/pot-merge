@@ -107,8 +107,9 @@ Block.prototype.hash = function() {
          duplicate.merge(block);
      else {
         try {
-            let msgidValue = block["msgid"][0].split(" ")[1]
-            block['msgstr'] = [new String('msgstr ' + msgidValue)]
+            var msgidValue = block["msgid"]
+            msgidValue[0].replace('msgid', 'msgstr')
+            block["msgstr"] = msgidValue
             this.blocks.push(block);
         } catch (e) {
             console.log(e);
@@ -120,7 +121,6 @@ SetOfBlocks.prototype.getDuplicate = function(hash) {
     for (var i = 0; i<this.blocks.length;i++)
         if (this.blocks[i].hash() === hash)
             return this.blocks[i];
-
         return;
     }
 
