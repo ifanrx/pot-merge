@@ -1,11 +1,10 @@
 {
   "name": "pot-merge",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Use for merging of pot-files. Takes care of contexttags",
   "main": "pot-merge.js",
   "bin": "cli.js",
   "dependencies": {
-    "extend": "^3.0.1",
     "promise": "^7.0.4",
     "yargs": "^4.6.0"
   },

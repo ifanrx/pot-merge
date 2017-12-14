@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 var fs = require('fs');
 var Promise = require('promise');
-var extend = require('extend')
 
 var readFile = Promise.denodeify(fs.readFile);
 
@@ -107,8 +106,7 @@ Block.prototype.hash = function() {
          duplicate.merge(block);
      else {
         try {
-            var blockCopy = extend({}, block)
-            var msgidValue = blockCopy["msgid"]
+            var msgidValue = [].concat(block['msgid'])
             msgidValue[0].replace('msgid', 'msgstr')
             block["msgstr"] = msgidValue
             this.blocks.push(block);
