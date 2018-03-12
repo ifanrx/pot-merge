@@ -107,7 +107,7 @@ Block.prototype.hash = function() {
      else {
         try {
             var msgidValue = [].concat(block['msgid'])
-            msgidValue[0].replace('msgid', 'msgstr')
+            msgidValue[0] = msgidValue[0].replace('msgid', 'msgstr')
             block["msgstr"] = msgidValue
             this.blocks.push(block);
         } catch (e) {
